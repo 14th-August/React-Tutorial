@@ -12,50 +12,38 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
 
-      function ProductDetails({itemName, price, discountPrice, imageSrc}) {
-        return (
-          <div>
-            <img src={imageSrc} width="150" />
-            <p>{itemName}</p>
-            {discountPrice ? (
-              <>
-                <del>Price: ${price}</del>
-                <p>Discount price: ${discountPrice}</p>
-              </>
-            ) : (
-              <p>Price: ${price}</p>
-            )}
-            <button>Add to Cart</button>
-          </div>
-        );
-      }
+    function App() {
+      const [inputText, setInputText] = React.useState('');
       
-      
-      function App() {
-        return (
-          <>
-            <ProductDetails
-              imageSrc="cotton-socks.png"
-              itemName="Cotton socks"
-              price="10.90"
-              discountPrice = "5.45"
-            />
-            <ProductDetails
-              imageSrc="plain-t-shirt.png"
-              itemName="Plain T-Shirt"
-              price="7.99"
-            />
-            <ProductDetails
-              imageSrc="tennis-balls.png"
-              itemName="Tennis balls"
-              price="6.00"
-            />
-          </>
-        );
+      function saveInputText(event) {
+        setInputText(event.target.value);
       }
 
-      const container = document.querySelector('.js-container');
-      ReactDOM.createRoot(container).render(<App />);
+      function resetInputText(event) {
+        setInputText('');
+      }
+
+      function exampleInputText(event) {
+        setInputText('Alice');
+      } 
+
+      return (
+        <>  
+          <input 
+            placeholder = "Type something" 
+            size = "30"
+            onChange = {saveInputText}
+          /> 
+          <p>Hello {inputText}</p>
+          <button onClick= {resetInputText}>Reset Text</button>
+          <button onClick = {exampleInputText}>Example Text</button>  
+        </>  
+      );
+    }
+
+
+    const container = document.querySelector('.js-container');
+    ReactDOM.createRoot(container).render(<App />);
     </script>
   </body>
 </html>
