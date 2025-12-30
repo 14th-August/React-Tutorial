@@ -13,7 +13,7 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      function ChatInput ({chatMessages, setChatMessages}) { //chat box input component
+      function ChatInput ({chatMessages, setChatMessages, isLoading}) { //chat box input component
         const [inputText, setInputText] = React.useState('');
         
         function saveInputText(event) {
