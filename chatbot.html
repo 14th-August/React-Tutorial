@@ -2,6 +2,21 @@
 <html>
   <head>
     <title>Chatbot</title>
+    <style>
+
+      .send-button {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 12px 20px;
+        margin-left: 10px;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px; 
+        cursor: pointer;
+      }
+
+      
+    </style>
   </head>
   <body>
     <div class="js-container"></div>
@@ -13,7 +28,7 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      function ChatInput ({chatMessages, setChatMessages, isLoading}) { //chat box input component
+      function ChatInput ({chatMessages, setChatMessages}) { //chat box input component
         const [inputText, setInputText] = React.useState('');
         
         function saveInputText(event) {
@@ -21,20 +36,20 @@
         }
         
         function sendMessage() {
-          setChatMessages([
+          const newChatMessages = [
             ...chatMessages,
             {
               message: inputText,
               sender: 'user',
               id: crypto.randomUUID()
             }
-          ]);
+          ];
+
+          setChatMessages(newChatMessages);
 
           const response = Chatbot.getResponse(inputText);
-
-
           setChatMessages([
-            ...chatMessages,
+            ...newChatMessages,
             {
               message: response,
               sender: 'robot',
@@ -54,7 +69,8 @@
             value = {inputText}
           /> 
           <button
-            onClick = {sendMessage}        
+            onClick = {sendMessage}
+            className="send-button"        
           >Send</button>
         </>
         );
