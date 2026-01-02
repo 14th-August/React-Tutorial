@@ -1,6 +1,6 @@
 import { useState } from 'react' //named export
-import { ChatInput } from './components/ChatInput';
-import ChatMessage from './components/ChatMessages'; //deafult export
+import { ChatInput } from './components/ChatInput'
+import ChatMessages from './components/ChatMessages'
 import './App.css'
 
 
