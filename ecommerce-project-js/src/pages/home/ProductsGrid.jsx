@@ -1,4 +1,4 @@
-import { Product } from './Product';
+import { Product } from './product';
 
 export function ProductsGrid({ products, loadCart }) {
 
@@ -9,7 +9,6 @@ export function ProductsGrid({ products, loadCart }) {
                     <Product key={product.id} product={product} loadCart={loadCart} />
                 );
             })}
-
         </div>
     );
 }
